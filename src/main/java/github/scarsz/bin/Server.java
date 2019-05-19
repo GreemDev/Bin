@@ -36,13 +36,13 @@ public class Server {
 
     public Server(int port) throws SQLException {
         instance = this;
-        config = new Configuration()
+        this.config = new Configuration()
                 .setMaximumExpiration(TimeUnit.DAYS, 365)
                 .setDefaultExpiration(TimeUnit.DAYS, 30)
                 .setPort(port);
-        connection = DriverManager.getConnection("jdbc:h2:" + new File("bin").getAbsolutePath());
+        this.connection = DriverManager.getConnection("jdbc:h2:" + new File("bin").getAbsolutePath());
 
-        connection.prepareStatement("create table if not exists bins" +
+        this.connection.prepareStatement("create table if not exists bins" +
                 "(" +
                 "    id uuid default random_uuid() not null," +
                 "    hits int default 0 not null," +
@@ -51,7 +51,7 @@ public class Server {
                 "    description blob default null," +
                 "    constraint bins_pk primary key (id)" +
                 ");").executeUpdate();
-        connection.prepareStatement("create table if not exists files" +
+        this.connection.prepareStatement("create table if not exists files" +
                 "(" +
                 "    id uuid default random_uuid() not null," +
                 "    bin uuid not null," +
@@ -64,7 +64,7 @@ public class Server {
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
-                connection.close();
+                this.connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

@@ -1,4 +1,7 @@
 # Bin
+
+Create PRs to the main repository, not this fork. This is for personal changes for *my* [instance of bin](https://bin.greemdev.net).
+
 Bin is an AES 128/256-bit encrypted, GitHub Gists-inspired, anonymous
 pastebin. All data on the server is encrypted such that the operators
 of the server have no knowledge of what data is stored on it. This

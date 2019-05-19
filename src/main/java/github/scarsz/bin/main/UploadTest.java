@@ -9,17 +9,16 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.*;
 
 public class UploadTest {
 
-    private static final Gson GSON = new GsonBuilder().disableHtmlEscaping().create();
+    private static final Gson GSON = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
     private static final SecureRandom RANDOM = new SecureRandom();
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         byte[] key = "01234567890123456789012345678901".getBytes(StandardCharsets.UTF_8);
 
         List<Map<String, Object>> files = new LinkedList<>();
